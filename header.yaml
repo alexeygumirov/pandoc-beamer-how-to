@@ -1,0 +1,19 @@
+---
+title: "My test presentation"
+author: "Alexey Gumirov, PF Senior E2E Designer"
+topic: "Cloud availability"
+# theme: "Copenhagen"
+theme: "CambridgeUS"
+# colortheme: "beaver"
+colortheme: "seahorse"
+# colortheme: "seagull"
+# colortheme: "dolphin"
+# colortheme: "lily"
+fonttheme: "professionalfonts"
+toc: true
+aspectratio: 169
+toc-own-page: true
+logo: "dt-logo.png"
+logo-width: 250
+date:
+---
