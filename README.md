@@ -129,4 +129,4 @@ Additional useful options of the **pandoc** command are:
 
 ## Examples
 
-With this [Markdown file](presentation.md) I produce [this (presentation.pdf)](presentation.pdf).
+With this [Markdown file](presentation.md) I produce [this presentation](presentation.pdf).

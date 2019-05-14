@@ -25,14 +25,12 @@ toc: true
 
 Normal text.
 *Italic text* and **bold text**.
-~~Strike out~~ is supported. Is 'text' supported as well?
+~~Strike out~~ is supported.
 
 ## Notes
 
 > This is a note.
-
-> > Nested note.
-
+> > Nested notes are not supported.
 > And it continues.
 
 ## Blocks
