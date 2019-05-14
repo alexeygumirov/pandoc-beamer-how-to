@@ -1,8 +1,19 @@
+---
+title: "My wonderful presentation"
+author: "Alexey Gumirov"
+topic: "Pandoc how-to"
+theme: "Frankfurt"
+colortheme: "beaver"
+fonttheme: "professionalfonts"
+date:
+toc: true
+---
+
 # General information
 ## Themes, fonts, etc.
 
 - I use default **pandoc** themes.
-- This presentation is made with **CambridgeUS** theme and **seahorse** color theme.
+- This presentation is made with **Frankfurt** theme and **beaver** color theme.
 - I like **professionalfonts** font scheme. 
 
 > Matrix of beamer themes: [https://hartwork.org/beamer-theme-matrix/](https://hartwork.org/beamer-theme-matrix/)
