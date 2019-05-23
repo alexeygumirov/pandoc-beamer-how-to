@@ -84,11 +84,10 @@ Here are two pictures in the raw. We can also change two pictures size (height o
 
 ###
 ```
-![Aleph 0](img/aleph0.png){height=10%}\ 
-		![Aleph 0](img/aleph0.png)
+![](img/aleph0.png){height=10%}\ ![](img/aleph0.png){height=30%} 
 ```
 
-![Aleph 0](img/aleph0.png){ height=10% }\ ![Aleph 0](img/aleph0.png){ height=100% }
+![](img/aleph0.png){ height=10% }\ ![](img/aleph0.png){ height=30% }
 
 ## Lists
 
