@@ -1,11 +1,17 @@
 ---
 title: "My wonderful presentation"
 author: "Alexey Gumirov"
+institute: "My home office"
 topic: "Pandoc how-to"
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
+fontsize: 11pt
+aspectratio: 169
+titlegraphic: img/aleph0.png
+logo: img/aleph0-small.png
 date:
+section-titles: false
 toc: true
 ---
 

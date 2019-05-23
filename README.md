@@ -43,8 +43,7 @@ sudo apt-get install texlive-latex-extra
 sudo apt-get install texlive-fonts-extra
 sudo apt-get install texlive-xetex
 ```
-
-Extra LaTeX packages are needed for **eisvogel** template to work. I also install XeTeX because if you have text with some special symbols, XeTeX can process it properly.
+I recommend to use Pandoc of **2.7.x** version for the creation of presentation because not all beamer features are supported in the Pandoc 1.x.
 
 ### Instructions and commands
 
@@ -55,11 +54,17 @@ This YAML block in the beginning of the MarkDown file defines parameters used by
 ```yaml
 title: "My wonderful presentation"
 author: "Alexey Gumirov"
+institute: "My home office"
 topic: "Pandoc how-to"
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
+fontsize: 11pt
+aspectratio: 169
+titlegraphic: img/aleph0.png
+logo: img/aleph0-small.png
 date:
+section-titles: false
 toc: true
 ```
 
