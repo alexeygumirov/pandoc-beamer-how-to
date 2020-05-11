@@ -14,7 +14,7 @@ I use default template and one of the pre-defined themes, color themes and font 
 
 	> Matrix of beamer themes: [https://hartwork.org/beamer-theme-matrix/](https://hartwork.org/beamer-theme-matrix/)
 
-	> Font themes: [http://www.deic.uab.es/~iblanes/beamer_gallery/index_by_font.html](http://www.deic.uab.es/~iblanes/beamer_gallery/index_by_font.html)
+	> Font themes: [https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_font.html](https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_font.html)
 
 - **texlive**
 - **convert**
