@@ -59,6 +59,8 @@ colortheme: "beaver"
 fonttheme: "professionalfonts"
 mainfont: "CodeNewRoman Nerd Font"
 fontsize: 10pt
+urlcolor: red
+linkstyle: bold
 aspectratio: 169
 titlegraphic: img/aleph0.png
 logo: img/aleph0-small.png
