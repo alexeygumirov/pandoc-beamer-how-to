@@ -90,6 +90,7 @@ pandoc -s -S --dpi=300 --slide-level 2 --toc --listings \
 ```
 
 > **--pdf-engine**: It is important to metion, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «xelatex» engine for PDF generation must be used.
+
 > **default_mod.latex**: This is default template which is modified by me to produce better looking listings. In the default template listings of code are not presented nicely, so I had to improve this part.
 
 Options of the **pandoc** command mean following:
