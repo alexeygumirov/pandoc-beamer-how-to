@@ -2,15 +2,13 @@
 
 This is a short guide about how I make PDF slides using **beamer** format output from the **pandoc**.
 
-I use default template and one of the pre-defined themes, color themes and font themes.
-
 ## How-to for docs preparation
 
 ### Tools
 
 - **pandoc**
 
-	- template: I use default template.
+	- template: I use my own modified template in order to produce nicer looking listings of code. This template you can download [here](pandoc/templates/default_mod.latex).
 
 	> Matrix of beamer themes: [https://hartwork.org/beamer-theme-matrix/](https://hartwork.org/beamer-theme-matrix/)
 
@@ -59,7 +57,8 @@ topic: "Pandoc how-to"
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
-fontsize: 11pt
+mainfont: "CodeNewRoman Nerd Font"
+fontsize: 10pt
 aspectratio: 169
 titlegraphic: img/aleph0.png
 logo: img/aleph0-small.png
@@ -84,10 +83,14 @@ SOURCE_FORMAT="markdown_github+yaml_metadata_block\
 	+implicit_figures+all_symbols_escapable+link_attributes"
 
 pandoc -s -S --dpi=300 --slide-level 2 --toc --listings \
-	--base-header-level=1 --template default -f "$SOURCE_FORMAT" \
+    --pdf-engine=xelatex \
+	--base-header-level=1 --template default_mod.latex -f "$SOURCE_FORMAT" \
 	-M date="$DATE_COVER" -V classoption:aspectratio=169 \
 	-V lang=en-US -t beamer presentation.md -o presentation.pdf
 ```
+
+> **--pdf-engine**: It is important to metion, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «xelatex» engine for PDF generation must be used.
+> **default_mod.latex**: This is default template which is modified by me to produce better looking listings. In the default template listings of code are not presented nicely, so I had to improve this part.
 
 Options of the **pandoc** command mean following:
 

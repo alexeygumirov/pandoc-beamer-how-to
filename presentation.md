@@ -6,6 +6,7 @@ topic: "Pandoc how-to"
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
+mainfont: "CodeNewRoman Nerd Font"
 fontsize: 11pt
 aspectratio: 169
 titlegraphic: img/aleph0.png
@@ -16,15 +17,17 @@ toc: true
 ---
 
 # General information
+
 ## Themes, fonts, etc.
 
 - I use default **pandoc** themes.
 - This presentation is made with **Frankfurt** theme and **beaver** color theme.
 - I like **professionalfonts** font scheme. 
 
-> Matrix of beamer themes: [https://hartwork.org/beamer-theme-matrix/](https://hartwork.org/beamer-theme-matrix/)
+## Links
 
-> Font themes: [http://www.deic.uab.es/~iblanes/beamer_gallery/index_by_font.html](http://www.deic.uab.es/~iblanes/beamer_gallery/index_by_font.html)
+- Matrix of beamer themes: [https://hartwork.org/beamer-theme-matrix/](https://hartwork.org/beamer-theme-matrix/)
+- Font themes: [http://www.deic.uab.es/~iblanes/beamer_gallery/index_by_font.html](http://www.deic.uab.es/~iblanes/beamer_gallery/index_by_font.html)
 
 # Formatting
 ## Text formatting
@@ -57,10 +60,16 @@ New block without header.
 
 ## Listings
 
-By some reasons, listings do not work in the default beamer template. Therefore it is better to put them in the blocks.
+Listings out of the block.
 
-###
+```sh
+#!/bin/bash
+echo "Hello world!"
+echo "line"
 ```
+### Listings in the block.
+
+```sh
 #!/bin/bash
 echo "Hello world!"
 echo "line"
