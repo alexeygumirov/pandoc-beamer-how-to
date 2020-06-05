@@ -30,6 +30,7 @@ toc: true
 
 - Matrix of beamer themes: [https://hartwork.org/beamer-theme-matrix/](https://hartwork.org/beamer-theme-matrix/)
 - Font themes: [http://www.deic.uab.es/~iblanes/beamer_gallery/index_by_font.html](http://www.deic.uab.es/~iblanes/beamer_gallery/index_by_font.html)
+- Nerd Fonts: [https://nerdfonts.com](https://nerdfonts.com)
 
 # Formatting
 ## Text formatting

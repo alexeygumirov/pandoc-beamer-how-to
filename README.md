@@ -10,9 +10,9 @@ This is a short guide about how I make PDF slides using **beamer** format output
 
 	- template: I use my own modified template in order to produce nicer looking listings of code. This template you can download [here](pandoc/templates/default_mod.latex).
 
-	> Matrix of beamer themes: [https://hartwork.org/beamer-theme-matrix/](https://hartwork.org/beamer-theme-matrix/)
+	- Matrix of beamer themes: [https://hartwork.org/beamer-theme-matrix/](https://hartwork.org/beamer-theme-matrix/)
 
-	> Font themes: [https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_font.html](https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_font.html)
+	- Font themes: [https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_font.html](https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_font.html)
 
 - **texlive**
 - **convert**
@@ -72,6 +72,8 @@ toc: true
 
 This YAML block is inserted in the beginning of the markdown file.
 
+The font I use for presentation (CodeNewRoman Nerd Font) you can get on the [nerdfonts.com](https://nerdfonts.com) page.
+
 #### Images preparation
 
 The same way as in [my pandoc for PDF project](https://github.com/alexeygumirov/pandoc-for-pdf-how-to#images-preparation)
@@ -85,11 +87,7 @@ DATE_COVER=$(date "+%d %B %Y")
 SOURCE_FORMAT="markdown_github+yaml_metadata_block\
 	+implicit_figures+all_symbols_escapable+link_attributes"
 
-pandoc -s -S --dpi=300 --slide-level 2 --toc --listings \
-    --pdf-engine=xelatex \
-	--base-header-level=1 --template default_mod.latex -f "$SOURCE_FORMAT" \
-	-M date="$DATE_COVER" -V classoption:aspectratio=169 \
-	-V lang=en-US -t beamer presentation.md -o presentation.pdf
+pandoc -s -S --dpi=300 --slide-level 2 --toc --listings --pdf-engine=xelatex --base-header-level=1 --template default_mod.latex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
 ```
 
 > **--pdf-engine**: It is important to metion, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «xelatex» engine for PDF generation must be used.
@@ -111,7 +109,9 @@ Options of the **pandoc** command mean following:
 	- `all_symbols_escapable`: Except inside a code block or inline code, any punctuation or space character preceded by a backslash will be treated literally, even if it would normally indicate formatting.
 	- `link_attributes`: Allows to add addional attributes to links (to images and refernce links). For pictures we can define width and height.
 
-If `-S` is not working then option `-f` shall be used with `+smart` extension. E.g. for this particular document the option with parameters will look like this: `-f markdown_github+yaml_metadata_block+implicit_figures+tables_captions+smart+footnotes`.
+If `-S` is not working then option `-f` shall be used with `+smart` extension. E.g. for this particular document the option with parameters will look like this:
+
+`markdown_github+yaml_metadata_block+implicit_figures+tables_captions+smart+footnotes`.
 
 - `--toc`: `--table-of-contents`
 
@@ -137,6 +137,7 @@ Additional useful options of the **pandoc** command are:
 
 - `--listings`: It creates nice presentation of the raw code (like shell code or programming code).
 - `--number-section`: Automatically creates enumerated headers. 
+- `--columns`: 
 - `--default-image-extension`: If you want Pandoc to insert only one type of images, e.g. PNG, then you shall add `--default-image-extension png` in the command line.
 
 ## Examples
