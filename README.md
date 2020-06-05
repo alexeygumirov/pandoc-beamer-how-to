@@ -32,6 +32,7 @@ sudo apt-get install pandoc
 sudo apt-get install imagemagick
 ```
 
+> `apt` will install pretty old version of Pandoc and some features will be missing. If you want latest version of this application, download latest package for your system from the project page: [https://github.com/jgm/pandoc/releases](https://github.com/jgm/pandoc/releases).
 I use following `texlive` packages:
 
 ```sh
