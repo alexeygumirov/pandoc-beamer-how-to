@@ -87,7 +87,7 @@ DATE_COVER=$(date "+%d %B %Y")
 SOURCE_FORMAT="markdown_github+yaml_metadata_block\
 	+implicit_figures+all_symbols_escapable+link_attributes"
 
-pandoc -s -S --dpi=300 --slide-level 2 --toc --listings --pdf-engine=xelatex --base-header-level=1 --template default_mod.latex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
+pandoc -s -S --dpi=300 --slide-level 2 --toc --listings --pdf-engine=xelatex --base-header-level=1 --columns=50 --template default_mod.latex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
 ```
 
 > **--pdf-engine**: It is important to metion, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «xelatex» engine for PDF generation must be used.
@@ -137,7 +137,7 @@ Additional useful options of the **pandoc** command are:
 
 - `--listings`: It creates nice presentation of the raw code (like shell code or programming code).
 - `--number-section`: Automatically creates enumerated headers. 
-- `--columns`: 
+- `--columns`: Specify length of lines in characters. This affects text wrapping in the generated source code (see --wrap). It also affects calculation of column widths for plain text tables.
 - `--default-image-extension`: If you want Pandoc to insert only one type of images, e.g. PNG, then you shall add `--default-image-extension png` in the command line.
 
 ## Examples
