@@ -139,7 +139,16 @@ Additional useful options of the **pandoc** command are:
 - `--number-section`: Automatically creates enumerated headers. 
 - `--columns`: Specify length of lines in characters. This affects text wrapping in the generated source code (see --wrap). It also affects calculation of column widths for plain text tables.
 - `--default-image-extension`: If you want Pandoc to insert only one type of images, e.g. PNG, then you shall add `--default-image-extension png` in the command line.
-
+- `Preamble` or `-H`: Pandoc lets user include a custom preamble in the generated output. If you have to use some packages in LaTeX ( not so much ), you can include it in the YAML header inside the `header-includes:` tag. For example I want to use package multicol in LaTeX, my header should look like:
+    ```yaml
+    header-includes:
+        - \usepackage{multicol}
+    ```
+    Preamble in Pandoc gives you more features than just to import some packages. We can also create our own PDF template. For presentation, we can re-config the Beamer theme. For example, By default, Ilmenau theme does not have slide numbers ( frame number ). So our goal now is to re-config the theme without changing the theme source code. If you are using LaTeX then it quite easy to deal with that. Either does Pandoc, instead of using header-includes tag, we can create a new file called preamble.tex - you can put all the configuration in LaTeX to this file the same way you use LaTeX to create a beamer presentation. Usage:
+    ```bash
+    -H preamble.tex
+    ```
+    > **preamble.tex**: This is default template which is modified by me to produce better colorscheme, frame number, and re-design footer, etc. In the default template of code, these features are not presented nicely, so I had to improve this part.
 ## Examples
 
 With this [Markdown file](presentation.md) I produce [this presentation](presentation.pdf).
