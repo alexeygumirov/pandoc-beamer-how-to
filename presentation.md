@@ -6,7 +6,7 @@ topic: "Pandoc how-to"
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
-mainfont: "CodeNewRoman Nerd Font"
+mainfont: "Hack Nerd Font"
 fontsize: 11pt
 urlcolor: red
 linkstyle: bold
@@ -114,3 +114,101 @@ Here are two pictures in the raw. We can also change two pictures size (height o
 	- genius idea A
 	- more genius 2
 3. Conclusion
+
+
+## Two columns of equal width
+
+::: columns
+
+:::: column
+Left column text.
+Another text line.
+::::
+
+:::: column
+- Item 1.
+- Item 2.
+- Item 3.
+::::
+
+:::
+
+## Two columns of with 40:60 split
+
+::: columns
+
+:::: {.column width=40%}
+Left column text.
+Another text line.
+::::
+
+:::: {.column width=60%}
+- Item 1.
+- Item 2.
+- Item 3.
+::::
+
+:::
+
+## Three columns with equal split
+
+::: columns
+
+:::: column
+Left column text.
+Another text line.
+::::
+
+:::: column
+Middle column list:
+1. Item 1.
+2. Item 2.
+::::
+
+:::: column
+Right column list:
+- Item 1.
+- Item 2.
+::::
+
+:::
+
+## Three columns with 30:40:30 split
+
+::: columns
+
+:::: {.column width=30%}
+Left column text.
+Another text line.
+::::
+
+:::: {.column width=40%}
+Middle column list:
+1. Item 1.
+2. Item 2.
+::::
+
+:::: {.column width=30%}
+Right column list:
+- Item 1.
+- Item 2.
+::::
+
+:::
+
+## Two columns: image and text
+
+::: columns
+
+:::: column
+![](img/aleph0.png){height=50%}
+::::
+
+:::: column
+Text in the right column.  
+List from the right column:
+- Item 1.
+- Item 2.
+::::
+
+:::

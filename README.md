@@ -2,6 +2,8 @@
 
 This is a short guide about how I make PDF slides using **beamer** format output from the **pandoc**.
 
+> Note: Commands are updated for the latest Pandoc version: `2.10.x` and newer.
+
 ## How-to for docs preparation
 
 ### Tools
@@ -42,7 +44,7 @@ sudo apt-get install texlive-latex-extra
 sudo apt-get install texlive-fonts-extra
 sudo apt-get install texlive-xetex
 ```
-I recommend to use Pandoc of **2.7.x** version for the creation of presentation because not all beamer features are supported in the Pandoc 1.x.
+I recommend to use Pandoc of **2.10.x** or newer version for the creation of presentation because not all beamer features are supported in the Pandoc 1.x.
 
 ### Instructions and commands
 
@@ -58,7 +60,7 @@ topic: "Pandoc how-to"
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
-mainfont: "CodeNewRoman Nerd Font"
+mainfont: "Hack Nerd Font"
 fontsize: 10pt
 urlcolor: red
 linkstyle: bold
@@ -72,7 +74,7 @@ toc: true
 
 This YAML block is inserted in the beginning of the markdown file.
 
-The font I use for presentation (CodeNewRoman Nerd Font) you can get on the [nerdfonts.com](https://nerdfonts.com) page.
+The font I use for presentation (Hack Nerd Font) you can get on the [nerdfonts.com](https://nerdfonts.com) page.
 
 #### Images preparation
 
@@ -85,9 +87,9 @@ The same way as in [my pandoc for PDF project](https://github.com/alexeygumirov/
 
 DATE_COVER=$(date "+%d %B %Y")
 SOURCE_FORMAT="markdown_github+yaml_metadata_block\
-	+implicit_figures+all_symbols_escapable+link_attributes"
+	+implicit_figures+all_symbols_escapable+link_attributes+fenced_divs"
 
-pandoc -s -S --dpi=300 --slide-level 2 --toc --listings --pdf-engine=xelatex --base-header-level=1 --columns=50 --template default_mod.latex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
+pandoc -s -S --dpi=300 --slide-level 2 --toc --listings --pdf-engine=xelatex --shift-heading-level=0 --columns=50 --template default_mod.latex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
 ```
 
 > **--pdf-engine**: It is important to metion, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «xelatex» engine for PDF generation must be used.
@@ -105,9 +107,13 @@ Options of the **pandoc** command mean following:
 - `-f FORMAT` or `-r FORMAT`:
 
     - Specify input format. `FORMAT` can be `native` (native Haskell), `json` (JSON version of native AST), `markdown` (pandoc's extended Markdown), `markdown_strict`(original  unextended  Markdown),  `markdown_phpextra` (PHP Markdown Extra), `markdown_github` (GitHub-Flavored Markdown), `commonmark` (CommonMark Markdown), `textile` (Textile), `rst` (reStructuredText), `html` (HTML), `docbook` (DocBook), `t2t` (txt2tags), `docx` (docx), `odt` (ODT), `epub` (EPUB), `opml` (OPML), `org` (Emacs Org mode), `mediawiki` (MediaWiki markup), `twiki` (TWiki markup), `haddock` (Haddock markup), or `latex` (LaTeX).  If `+lhs` is appended to `markdown`, `rst`, `latex`, or `html`, the input will be treated as literate Haskell source. Markdown syntax extensions can be individually enabled or disabled by appending `+EXTENSION` or `-EXTENSION` to the format name.  So, for example, `markdown_strict+footnotes+definition_lists` is strict Markdown with footnotes and definition lists enabled, and `markdown-pipe_tables+hard_line_breaks`  is  pandoc's  Markdown  without pipe tables and with hard line breaks.
-	- `implicit_figures`: An image with nonempty alt text, occurring by itself in a paragraph, will be rendered as a figure with a caption. The image’s alt text will be used as the caption. This extension is very useful when you need to autogenerate captions for figures in the markdown reference format like: ``` ![This is the caption](/url/of/image.png) ```
+	- `implicit_figures`: An image with nonempty alt text, occurring by itself in a paragraph, will be rendered as a figure with a caption. The image’s alt text will be used as the caption. This extension is very useful when you need to autogenerate captions for figures in the markdown reference format like:
+```
+    ![This is the caption](/url/of/image.png)
+```
 	- `all_symbols_escapable`: Except inside a code block or inline code, any punctuation or space character preceded by a backslash will be treated literally, even if it would normally indicate formatting.
 	- `link_attributes`: Allows to add addional attributes to links (to images and refernce links). For pictures we can define width and height.
+    - `fenced_divs`: Allow special fenced syntax for native `Div` blocks. A `Div` starts with a fence containing at least three consecutive colons plus some attributes. The attributes may optionally be followed by another string of consecutive colons.  
 
 If `-S` is not working then option `-f` shall be used with `+smart` extension. E.g. for this particular document the option with parameters will look like this:
 
@@ -121,7 +127,9 @@ If `-S` is not working then option `-f` shall be used with `+smart` extension. E
 
     - Specify the dpi (dots per inch) value for conversion from pixels to inch/centimeters and vice versa.  The **default** is **96dpi**.  Technically, the correct term would be ppi (pixels per inch).
 
-- `--base-header-level=N`: Specify the base level for heading (default is to 1).
+- `--base-header-level=N`: **DEPRECATED (use _--shift-heading-level-by_ instead)**. Specify the base level for heading (default is to 1).
+
+- `--shift-heading-level-by=N`: Shift heading levels by a positive or negative integer. For example, with `--shift-heading-level-by=-1`, level 2 headings become level 1 headings, and level 3 headings become level 2 headings. I use `--shift-heading-level-by=0` in my scripts.
 
 - `--slide-level N`
 
@@ -149,6 +157,122 @@ Additional useful options of the **pandoc** command are:
     -H preamble.tex
     ```
     > **preamble.tex**: This is default template which is modified by me to produce better colorscheme, frame number, and re-design footer, etc. In the default template of code, these features are not presented nicely, so I had to improve this part.
+
+## Columns on slides
+
+`fenced_divs` extension allows to divide slide in colums.
+
+### Two or three columns with texts
+
+**Two columns of equal width**
+```
+## Slide header
+
+::: columns
+
+:::: column
+Left column text.
+Another text line.
+::::
+
+:::: column
+- Item 1.
+- Item 2.
+- Item 3.
+::::
+
+:::
+```
+
+**Two columns of with 40:60 split**
+```
+## Slide header
+
+::: columns
+
+:::: {.column width=40%}
+Left column text.
+Another text line.
+::::
+
+:::: {.column width=60%}
+- Item 1.
+- Item 2.
+- Item 3.
+::::
+
+:::
+```
+
+**Three columns with equal split**
+```
+## Slide header
+
+::: columns
+
+:::: column
+Left column text.
+Another text line.
+::::
+
+:::: column
+Middle column list:
+1. Item 1.
+2. Item 2.
+::::
+
+:::: column
+Right column list:
+- Item 1.
+- Item 2.
+::::
+
+:::
+```
+
+**Three columns with 30:40:30 split**
+
+```
+::: columns
+
+:::: {.column width=30%}
+Left column text.
+Another text line.
+::::
+
+:::: {.column width=40%}
+Middle column list:
+1. Item 1.
+2. Item 2.
+::::
+
+:::: {.column width=30%}
+Right column list:
+- Item 1.
+- Item 2.
+::::
+
+:::
+```
+
+**Two columns: image and text**
+
+```
+::: columns
+
+:::: column
+![](image.png){height=100%}
+::::
+
+:::: column
+Text in the right column.
+List from the right column.
+- Item 1.
+- Item 2.
+::::
+
+:::
+```
 ## Examples
 
 With this [Markdown file](presentation.md) I produce [this presentation](presentation.pdf).
