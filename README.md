@@ -233,6 +233,8 @@ Right column list:
 **Three columns with 30:40:30 split**
 
 ```
+## Slide header
+
 ::: columns
 
 :::: {.column width=30%}
@@ -258,6 +260,8 @@ Right column list:
 **Two columns: image and text**
 
 ```
+## Slide header
+
 ::: columns
 
 :::: column
@@ -277,6 +281,8 @@ List from the right column.
 **Two columns: image and table**
 
 ```
+## Slide header
+
 ::: columns
 
 :::: column
