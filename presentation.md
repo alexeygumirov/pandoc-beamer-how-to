@@ -212,3 +212,22 @@ List from the right column:
 ::::
 
 :::
+
+## Two columns: image and table
+
+::: columns
+
+:::: column
+![](img/aleph0.png){height=50%}
+::::
+
+:::: column
+
+| **Item** | **Option** |
+|:---------|:----------:|
+| Item 1   | Option 1   |
+| Item 2   | Option 2   |
+
+::::
+
+:::

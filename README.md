@@ -273,6 +273,28 @@ List from the right column.
 
 :::
 ```
+
+**Two columns: image and table**
+
+```
+::: columns
+
+:::: column
+![](image.png){height=100%}
+::::
+
+:::: column
+
+| **Item** | **Option** |
+|:---------|:----------:|
+| Item 1   | Option 1   |
+| Item 2   | Option 2   |
+
+::::
+
+:::
+```
+
 ## Examples
 
 With this [Markdown file](presentation.md) I produce [this presentation](presentation.pdf).
