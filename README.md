@@ -85,7 +85,7 @@ The same way as in [my pandoc for PDF project](https://github.com/alexeygumirov/
 > All Pandoc commands are for the Pandoc version 2.x.
 
 > Since version 2.11 Pandoc warns that source format `markdown_github` is deprecated.
-> For my formatting following replacement works: `markdown_github` -> `markdown_strict+pipe_tables+backtick_code_blocks`. Below all scripts are given with the new `markdown_strict` source format.
+> For my formatting following replacement works: `markdown_github` -> `markdown_strict+pipe_tables+backtick_code_blocks+strikeout`. Below all scripts are given with the new `markdown_strict` source format.
 
 ```sh
 #!/bin/bash
@@ -95,9 +95,10 @@ DATE_COVER=$(date "+%d %B %Y")
 SOURCE_FORMAT="markdown_github+yaml_metadata_block+implicit_figures+all_symbols_escapable+link_attributes+smart+fenced_divs"
 
 SOURCE_FORMAT="markdown_strict+pipe_tables+\
-    backtick_code_blocks+yaml_metadata_block\
-	+implicit_figures+all_symbols_escapable+\
-    +strikeout+link_attributes+smart+fenced_divs"
+    backtick_code_blocks+strikeout+\
+    yaml_metadata_block+implicit_figures+\
+    all_symbols_escapable+link_attributes+\
+    smart+fenced_divs"
 
 pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --columns=50 --template default_mod.latex --pdf-engine xelatex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
 ```
@@ -152,14 +153,18 @@ Additional useful options of the **pandoc** command are:
 - `--columns`: Specify length of lines in characters. This affects text wrapping in the generated source code (see --wrap). It also affects calculation of column widths for plain text tables.
 - `--default-image-extension`: If you want Pandoc to insert only one type of images, e.g. PNG, then you shall add `--default-image-extension png` in the command line.
 - `Preamble` or `-H`: Pandoc lets user include a custom preamble in the generated output. If you have to use some packages in LaTeX ( not so much ), you can include it in the YAML header inside the `header-includes:` tag. For example I want to use package multicol in LaTeX, my header should look like:
+
     ```yaml
     header-includes:
         - \usepackage{multicol}
     ```
+
     Preamble in Pandoc gives you more features than just to import some packages. We can also create our own PDF template. For presentation, we can re-config the Beamer theme. For example, By default, Ilmenau theme does not have slide numbers ( frame number ). So our goal now is to re-config the theme without changing the theme source code. If you are using LaTeX then it quite easy to deal with that. Either does Pandoc, instead of using header-includes tag, we can create a new file called preamble.tex - you can put all the configuration in LaTeX to this file the same way you use LaTeX to create a beamer presentation. Usage:
+
     ```bash
     -H preamble.tex
     ```
+
     > **preamble.tex**: This is default template which is modified by me to produce better colorscheme, frame number, and re-design footer, etc. In the default template of code, these features are not presented nicely, so I had to improve this part.
 
 ## Columns on slides
