@@ -121,14 +121,18 @@ Here are two pictures in the raw. We can also change two pictures size (height o
 ::: columns
 
 :::: column
+
 Left column text.
 Another text line.
+
 ::::
 
 :::: column
+
 - Item 1.
 - Item 2.
 - Item 3.
+
 ::::
 
 :::
@@ -143,9 +147,11 @@ Another text line.
 ::::
 
 :::: {.column width=60%}
+
 - Item 1.
 - Item 2.
 - Item 3.
+
 ::::
 
 :::
@@ -155,20 +161,28 @@ Another text line.
 ::: columns
 
 :::: column
+
 Left column text.
 Another text line.
+
 ::::
 
 :::: column
+
 Middle column list:
+
 1. Item 1.
 2. Item 2.
+
 ::::
 
 :::: column
+
 Right column list:
+
 - Item 1.
 - Item 2.
+
 ::::
 
 :::
@@ -178,20 +192,28 @@ Right column list:
 ::: columns
 
 :::: {.column width=30%}
+
 Left column text.
 Another text line.
+
 ::::
 
 :::: {.column width=40%}
+
 Middle column list:
+
 1. Item 1.
 2. Item 2.
+
 ::::
 
 :::: {.column width=30%}
+
 Right column list:
+
 - Item 1.
 - Item 2.
+
 ::::
 
 :::
@@ -201,12 +223,16 @@ Right column list:
 ::: columns
 
 :::: column
+
 ![](img/aleph0.png){height=50%}
+
 ::::
 
 :::: column
+
 Text in the right column.  
 List from the right column:
+
 - Item 1.
 - Item 2.
 ::::
@@ -218,7 +244,9 @@ List from the right column:
 ::: columns
 
 :::: column
+
 ![](img/aleph0.png){height=50%}
+
 ::::
 
 :::: column

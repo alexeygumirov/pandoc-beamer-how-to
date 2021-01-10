@@ -82,39 +82,46 @@ The same way as in [my pandoc for PDF project](https://github.com/alexeygumirov/
 
 #### Pandoc command
 
+> All Pandoc commands are for the Pandoc version 2.x.
+
+> Since version 2.11 Pandoc warns that source format `markdown_github` is deprecated.
+> For my formatting following replacement works: `markdown_github` -> `markdown_strict+pipe_tables+backtick_code_blocks`. Below all scripts are given with the new `markdown_strict` source format.
+
 ```sh
 #!/bin/bash
 
 DATE_COVER=$(date "+%d %B %Y")
-SOURCE_FORMAT="markdown_github+yaml_metadata_block\
-	+implicit_figures+all_symbols_escapable+link_attributes+fenced_divs"
 
-pandoc -s -S --dpi=300 --slide-level 2 --toc --listings --pdf-engine=xelatex --shift-heading-level=0 --columns=50 --template default_mod.latex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
+SOURCE_FORMAT="markdown_github+yaml_metadata_block+implicit_figures+all_symbols_escapable+link_attributes+smart+fenced_divs"
+
+SOURCE_FORMAT="markdown_strict+pipe_tables+\
+    backtick_code_blocks+yaml_metadata_block\
+	+implicit_figures+all_symbols_escapable+\
+    +strikeout+link_attributes+smart+fenced_divs"
+
+pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --columns=50 --template default_mod.latex --pdf-engine xelatex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
 ```
 
-> **--pdf-engine**: It is important to metion, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «xelatex» engine for PDF generation must be used.
+> **--pdf-engine**: It is important to mention, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «xelatex» engine for PDF generation must be used.
 
 > **default_mod.latex**: This is default template which is modified by me to produce better looking listings. In the default template listings of code are not presented nicely, so I had to improve this part.
 
 Options of the **pandoc** command mean following:
 
 - `-s`: Standalone document.
-- `-S`: `--smart`
-
-    - Produce  typographically  correct  output,  converting  straight  quotes  to  curly  quotes, --- to em-dashes, -- to en-dashes, and ... to   ellipses.  Nonbreaking spaces are inserted after certain abbreviations, such as “Mr.” (Note: This option is  selected  automatically  when   the output format is latex or context, unless `--no-tex-ligatures` is used.  It has no effect for latex input.)
-    > - In newer versions of **pandoc** this switch was removed and you shall use `+smart` extension in the `-f` option.
 
 - `-f FORMAT` or `-r FORMAT`:
 
     - Specify input format. `FORMAT` can be `native` (native Haskell), `json` (JSON version of native AST), `markdown` (pandoc's extended Markdown), `markdown_strict`(original  unextended  Markdown),  `markdown_phpextra` (PHP Markdown Extra), `markdown_github` (GitHub-Flavored Markdown), `commonmark` (CommonMark Markdown), `textile` (Textile), `rst` (reStructuredText), `html` (HTML), `docbook` (DocBook), `t2t` (txt2tags), `docx` (docx), `odt` (ODT), `epub` (EPUB), `opml` (OPML), `org` (Emacs Org mode), `mediawiki` (MediaWiki markup), `twiki` (TWiki markup), `haddock` (Haddock markup), or `latex` (LaTeX).  If `+lhs` is appended to `markdown`, `rst`, `latex`, or `html`, the input will be treated as literate Haskell source. Markdown syntax extensions can be individually enabled or disabled by appending `+EXTENSION` or `-EXTENSION` to the format name.  So, for example, `markdown_strict+footnotes+definition_lists` is strict Markdown with footnotes and definition lists enabled, and `markdown-pipe_tables+hard_line_breaks`  is  pandoc's  Markdown  without pipe tables and with hard line breaks.
-    - `implicit_figures`: An image with nonempty alt text, occurring by itself in a paragraph, will be rendered as a figure with a caption. The image’s alt text will be used as the caption. This extension is very useful when you need to autogenerate captions for figures in the markdown reference format like: `![This is the caption](/url/of/image.png)`.
     - `all_symbols_escapable`: Except inside a code block or inline code, any punctuation or space character preceded by a backslash will be treated literally, even if it would normally indicate formatting.
+    - `backtick_code_blocks`: In addition to standard indented code blocks, pandoc supports fenced code blocks. These begin with a row of three or more backticks (\`) and end with a row of backticks that must be at least as long as the starting row.
+    - `implicit_figures`: An image with nonempty alt text, occurring by itself in a paragraph, will be rendered as a figure with a caption. The image’s alt text will be used as the caption. This extension is very useful when you need to autogenerate captions for figures in the markdown reference format like: `![This is the caption](/url/of/image.png)`.
 	- `link_attributes`: Allows to add addional attributes to links (to images and refernce links). For pictures we can define width and height.
     - `fenced_divs`: Allow special fenced syntax for native `Div` blocks. A `Div` starts with a fence containing at least three consecutive colons plus some attributes. The attributes may optionally be followed by another string of consecutive colons.  
-
-If `-S` is not working then option `-f` shall be used with `+smart` extension. E.g. for this particular document the option with parameters will look like this:
-
-`markdown_github+yaml_metadata_block+implicit_figures+all_symbols_escapable+link_attributes+smart+fenced_divs`
+    - `pipe_tables`: Table syntax identical to Github and PHP Markdown Extra Tables.
+    - `smart`: Produce  typographically  correct  output,  converting  straight  quotes  to  curly  quotes, --- to em-dashes, -- to en-dashes, and ... to   ellipses.  Nonbreaking spaces are inserted after certain abbreviations, such as “Mr.” (Note: This option is  selected  automatically  when   the output format is latex or context, unless `--no-tex-ligatures` is used.  It has no effect for latex input.)
+    - `strikeout`: To strikeout a section of text with a horizontal line, begin and end it with `~~`.
+    - `yaml_metadata_block`: A YAML metadata block is a valid YAML object, delimited by a line of three hyphens (---) at the top and a line of three hyphens (---) or three dots (...) at the bottom. A YAML metadata block may occur anywhere in the document, but if it is not at the beginning, it must be preceded by a blank line. 
 
 - `--toc`: `--table-of-contents`
 
@@ -157,7 +164,7 @@ Additional useful options of the **pandoc** command are:
 
 ## Columns on slides
 
-`fenced_divs` extension allows to divide slide in colums.
+`fenced_divs` extension allows to divide slide in columns.
 
 ### Two or three columns with texts
 
@@ -168,14 +175,18 @@ Additional useful options of the **pandoc** command are:
 ::: columns
 
 :::: column
+
 Left column text.
 Another text line.
+
 ::::
 
 :::: column
+
 - Item 1.
 - Item 2.
 - Item 3.
+
 ::::
 
 :::
@@ -188,14 +199,18 @@ Another text line.
 ::: columns
 
 :::: {.column width=40%}
+
 Left column text.
 Another text line.
+
 ::::
 
 :::: {.column width=60%}
+
 - Item 1.
 - Item 2.
 - Item 3.
+
 ::::
 
 :::
@@ -208,20 +223,28 @@ Another text line.
 ::: columns
 
 :::: column
+
 Left column text.
 Another text line.
+
 ::::
 
 :::: column
+
 Middle column list:
+
 1. Item 1.
 2. Item 2.
+
 ::::
 
 :::: column
+
 Right column list:
+
 - Item 1.
 - Item 2.
+
 ::::
 
 :::
@@ -235,20 +258,28 @@ Right column list:
 ::: columns
 
 :::: {.column width=30%}
+
 Left column text.
 Another text line.
+
 ::::
 
 :::: {.column width=40%}
+
 Middle column list:
+
 1. Item 1.
 2. Item 2.
+
 ::::
 
 :::: {.column width=30%}
+
 Right column list:
+
 - Item 1.
 - Item 2.
+
 ::::
 
 :::
@@ -262,14 +293,19 @@ Right column list:
 ::: columns
 
 :::: column
+
 ![](image.png){height=100%}
+
 ::::
 
 :::: column
+
 Text in the right column.
 List from the right column.
+
 - Item 1.
 - Item 2.
+
 ::::
 
 :::
@@ -283,7 +319,9 @@ List from the right column.
 ::: columns
 
 :::: column
+
 ![](image.png){height=100%}
+
 ::::
 
 :::: column
