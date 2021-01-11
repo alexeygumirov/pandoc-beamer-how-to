@@ -5,6 +5,7 @@ DATE_COVER=$(date "+%d %B %Y")
 SOURCE_FORMAT="markdown_strict\
 +pipe_tables\
 +backtick_code_blocks\
++auto_identifiers\
 +strikeout\
 +yaml_metadata_block\
 +implicit_figures\

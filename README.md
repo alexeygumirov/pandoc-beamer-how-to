@@ -85,20 +85,24 @@ The same way as in [my pandoc for PDF project](https://github.com/alexeygumirov/
 > All Pandoc commands are for the Pandoc version 2.x.
 
 > Since version 2.11 Pandoc warns that source format `markdown_github` is deprecated.
-> For my formatting following replacement works: `markdown_github` -> `markdown_strict+pipe_tables+backtick_code_blocks+strikeout`. Below all scripts are given with the new `markdown_strict` source format.
+> For my formatting following replacement works: `markdown_github` -> `markdown_strict+pipe_tables+backtick_code_blocks+auto_identifiers+strikeout`. Below all scripts are given with the new `markdown_strict` source format.
 
 ```sh
 #!/bin/bash
 
 DATE_COVER=$(date "+%d %B %Y")
 
-SOURCE_FORMAT="markdown_github+yaml_metadata_block+implicit_figures+all_symbols_escapable+link_attributes+smart+fenced_divs"
-
-SOURCE_FORMAT="markdown_strict+pipe_tables+\
-    backtick_code_blocks+strikeout+\
-    yaml_metadata_block+implicit_figures+\
-    all_symbols_escapable+link_attributes+\
-    smart+fenced_divs"
+SOURCE_FORMAT="markdown_strict\
++pipe_tables\
++backtick_code_blocks\
++auto_identifiers\
++strikeout\
++yaml_metadata_block\
++implicit_figures\
++all_symbols_escapable\
++link_attributes\
++smart\
++fenced_divs"
 
 pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --columns=50 --template default_mod.latex --pdf-engine xelatex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
 ```
@@ -115,6 +119,7 @@ Options of the **pandoc** command mean following:
 
     - Specify input format. `FORMAT` can be `native` (native Haskell), `json` (JSON version of native AST), `markdown` (pandoc's extended Markdown), `markdown_strict`(original  unextended  Markdown),  `markdown_phpextra` (PHP Markdown Extra), `markdown_github` (GitHub-Flavored Markdown), `commonmark` (CommonMark Markdown), `textile` (Textile), `rst` (reStructuredText), `html` (HTML), `docbook` (DocBook), `t2t` (txt2tags), `docx` (docx), `odt` (ODT), `epub` (EPUB), `opml` (OPML), `org` (Emacs Org mode), `mediawiki` (MediaWiki markup), `twiki` (TWiki markup), `haddock` (Haddock markup), or `latex` (LaTeX).  If `+lhs` is appended to `markdown`, `rst`, `latex`, or `html`, the input will be treated as literate Haskell source. Markdown syntax extensions can be individually enabled or disabled by appending `+EXTENSION` or `-EXTENSION` to the format name.  So, for example, `markdown_strict+footnotes+definition_lists` is strict Markdown with footnotes and definition lists enabled, and `markdown-pipe_tables+hard_line_breaks`  is  pandoc's  Markdown  without pipe tables and with hard line breaks.
     - `all_symbols_escapable`: Except inside a code block or inline code, any punctuation or space character preceded by a backslash will be treated literally, even if it would normally indicate formatting.
+    - `auto_identifiers`: A heading without an explicitly specified identifier will be automatically assigned a unique identifier based on the heading text. Allows to make cross references. More information on [Pandoc documentation page](https://pandoc.org/MANUAL.html#extension-auto_identifiers).
     - `backtick_code_blocks`: In addition to standard indented code blocks, pandoc supports fenced code blocks. These begin with a row of three or more backticks (\`) and end with a row of backticks that must be at least as long as the starting row.
     - `implicit_figures`: An image with nonempty alt text, occurring by itself in a paragraph, will be rendered as a figure with a caption. The image’s alt text will be used as the caption. This extension is very useful when you need to autogenerate captions for figures in the markdown reference format like: `![This is the caption](/url/of/image.png)`.
 	- `link_attributes`: Allows to add addional attributes to links (to images and refernce links). For pictures we can define width and height.
