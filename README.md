@@ -68,6 +68,7 @@ aspectratio: 169
 titlegraphic: img/aleph0.png
 logo: img/aleph0-small.png
 date:
+lang: en-US
 section-titles: false
 toc: true
 ```
@@ -85,7 +86,14 @@ The same way as in [my pandoc for PDF project](https://github.com/alexeygumirov/
 > All Pandoc commands are for the Pandoc version 2.x.
 
 > Since version 2.11 Pandoc warns that source format `markdown_github` is deprecated.
-> For my formatting following replacement works: `markdown_github` -> `markdown_strict+pipe_tables+backtick_code_blocks+auto_identifiers+strikeout`. Below all scripts are given with the new `markdown_strict` source format.
+> For my formatting following replacement works:
+>
+> `markdown_github` ⇒
+>
+> ```
+> markdown_strict+pipe_tables+backtick_code_blocks+auto_identifiers+strikeout
+> ```
+> Below all scripts are given with the new `markdown_strict` source format.
 
 ```sh
 #!/bin/bash
@@ -348,4 +356,6 @@ List from the right column.
 
 ## Examples
 
-With this [Markdown file](presentation.md) I produce [this presentation](presentation.pdf).
+- With this [Markdown file](presentation.md) I produce:
+    - [This presentation](presentation.pdf) with the default theme (small changes only in the YAML header).
+    - [Modified style presentation](presentation_nice_formatting.pdf) with the modified theme via `preamble.tex` file.
