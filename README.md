@@ -180,21 +180,26 @@ Additional useful options of the **pandoc** command are:
 
     > **preamble.tex**: This is default template which is modified by me to produce better colorscheme, frame number, and re-design footer, etc. In the default template of code, these features are not presented nicely, so I had to improve this part.
 
+![Modified theme](img/my_template.png)
 ## Columns on slides
 
 `fenced_divs` extension allows to divide slide in columns.
 
-### Two or three columns with texts
+### Two columns of equal width
 
-**Two columns of equal width**
-```
-## Slide header
+![Two equal columns](img/two-col-eq.png)
+
+*Code:*
+
+```markdown
+## Two columns of equal width
 
 ::: columns
 
 :::: column
 
 Left column text.
+
 Another text line.
 
 ::::
@@ -210,15 +215,21 @@ Another text line.
 :::
 ```
 
-**Two columns of with 40:60 split**
-```
-## Slide header
+### Two columns of with 40:60 split
+
+![Two columns of 40:60 split](img/two-col-40-60.png)
+
+*Code:*
+
+```markdown
+## Two columns of with 40:60 split
 
 ::: columns
 
 :::: {.column width=40%}
 
 Left column text.
+
 Another text line.
 
 ::::
@@ -234,15 +245,21 @@ Another text line.
 :::
 ```
 
-**Three columns with equal split**
+### Three columns with equal split
+
+![Three equal columns](img/three-col-eq.png)
+
+*Code:*
+
 ```
-## Slide header
+## Three columns with equal split
 
 ::: columns
 
 :::: column
 
 Left column text.
+
 Another text line.
 
 ::::
@@ -268,16 +285,21 @@ Right column list:
 :::
 ```
 
-**Three columns with 30:40:30 split**
+### Three columns with 30:40:30 split
+
+![Three columns with 30:40:40 split](img/three-col-30-40-30.png)
+
+*Code:*
 
 ```
-## Slide header
+## Three columns with 30:40:30 split
 
 ::: columns
 
 :::: {.column width=30%}
 
 Left column text.
+
 Another text line.
 
 ::::
@@ -303,42 +325,48 @@ Right column list:
 :::
 ```
 
-**Two columns: image and text**
+### Two columns: image and text
+
+![Two columns: image and text](img/two-col-im-txt.png)
+
+*Code:*
 
 ```
-## Slide header
+## Two columns: image and text
 
 ::: columns
 
 :::: column
 
-![](image.png){height=100%}
+![](img/aleph0.png){height=50%}
 
 ::::
 
 :::: column
 
-Text in the right column.
-List from the right column.
+Text in the right column.  
+
+List from the right column:
 
 - Item 1.
 - Item 2.
-
 ::::
 
 :::
 ```
 
-**Two columns: image and table**
+### Two columns: image and table
+
+![Two columns: image and table](img/two-col-im-tab.png)
 
 ```
-## Slide header
+## Two columns: image and table
 
 ::: columns
 
 :::: column
 
-![](image.png){height=100%}
+![](img/aleph0.png){height=50%}
 
 ::::
 
@@ -352,6 +380,48 @@ List from the right column.
 ::::
 
 :::
+```
+
+**Fancy layout**
+
+![Fancy layout](img/fancy-layout.png)
+
+```
+## Fancy layout
+
+### Proposal
+
+- Point A
+- Point B
+
+::: columns
+
+:::: column
+
+### Pros
+
+- Good
+- Better
+- Best
+
+::::
+
+:::: column
+
+### Cons
+
+- Bad
+- Worse
+- Worst
+
+::::
+
+:::
+
+### Conclusion
+
+- Let's go for it!
+- No way we go for it!
 ```
 
 ## Examples

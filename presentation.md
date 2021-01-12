@@ -123,6 +123,7 @@ Here are two pictures in the raw. We can also change two pictures size (height o
 :::: column
 
 Left column text.
+
 Another text line.
 
 ::::
@@ -142,8 +143,11 @@ Another text line.
 ::: columns
 
 :::: {.column width=40%}
+
 Left column text.
+
 Another text line.
+
 ::::
 
 :::: {.column width=60%}
@@ -163,6 +167,7 @@ Another text line.
 :::: column
 
 Left column text.
+
 Another text line.
 
 ::::
@@ -194,6 +199,7 @@ Right column list:
 :::: {.column width=30%}
 
 Left column text.
+
 Another text line.
 
 ::::
@@ -231,6 +237,7 @@ Right column list:
 :::: column
 
 Text in the right column.  
+
 List from the right column:
 
 - Item 1.
@@ -259,3 +266,39 @@ List from the right column:
 ::::
 
 :::
+
+## Fancy layout
+
+### Proposal
+
+- Point A
+- Point B
+
+::: columns
+
+:::: column
+
+### Pros
+
+- Good
+- Better
+- Best
+
+::::
+
+:::: column
+
+### Cons
+
+- Bad
+- Worse
+- Worst
+
+::::
+
+:::
+
+### Conclusion
+
+- Let's go for it!
+- No way we go for it!
