@@ -362,6 +362,8 @@ List from the right column:
 
 ![Two columns: image and table](img/two-col-im-tab.png)
 
+*Code:*
+
 ```
 ## Two columns: image and table
 
@@ -388,6 +390,8 @@ List from the right column:
 ### Fancy layout
 
 ![Fancy layout](img/fancy-layout.png)
+
+*Code:*
 
 ```
 ## Fancy layout
