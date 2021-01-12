@@ -254,7 +254,7 @@ Another text line.
 
 *Code:*
 
-```
+```markdown
 ## Three columns with equal split
 
 ::: columns
@@ -294,7 +294,7 @@ Right column list:
 
 *Code:*
 
-```
+```markdown
 ## Three columns with 30:40:30 split
 
 ::: columns
@@ -334,7 +334,7 @@ Right column list:
 
 *Code:*
 
-```
+```markdown
 ## Two columns: image and text
 
 ::: columns
@@ -364,7 +364,7 @@ List from the right column:
 
 *Code:*
 
-```
+```markdown
 ## Two columns: image and table
 
 ::: columns
@@ -393,7 +393,7 @@ List from the right column:
 
 *Code:*
 
-```
+```markdown
 ## Fancy layout
 
 ### Proposal
