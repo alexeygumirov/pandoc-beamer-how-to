@@ -180,7 +180,10 @@ Additional useful options of the **pandoc** command are:
 
     > **preamble.tex**: This is default template which is modified by me to produce better colorscheme, frame number, and re-design footer, etc. In the default template of code, these features are not presented nicely, so I had to improve this part.
 
+*Screenshot of the theme modified with `preamble.tex`*
+
 ![Modified theme](img/my_template.png)
+
 ## Columns on slides
 
 `fenced_divs` extension allows to divide slide in columns.
