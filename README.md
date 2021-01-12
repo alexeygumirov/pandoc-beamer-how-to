@@ -385,7 +385,7 @@ List from the right column:
 :::
 ```
 
-**Fancy layout**
+### Fancy layout
 
 ![Fancy layout](img/fancy-layout.png)
 
