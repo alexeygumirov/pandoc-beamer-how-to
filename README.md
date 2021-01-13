@@ -96,7 +96,7 @@ The same way as in [my pandoc for PDF project](https://github.com/alexeygumirov/
 > Below all scripts are given with the new `markdown_strict` source format.
 
 ```sh
-#!/bin/sh
+#!/usr/bin/sh
 
 DATE_COVER=$(date "+%d %B %Y")
 
