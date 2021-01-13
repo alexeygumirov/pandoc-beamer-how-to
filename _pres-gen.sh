@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 DATE_COVER=$(date "+%d %B %Y")
 
