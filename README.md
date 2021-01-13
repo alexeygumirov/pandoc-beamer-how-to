@@ -90,13 +90,13 @@ The same way as in [my pandoc for PDF project](https://github.com/alexeygumirov/
 >
 > `markdown_github` ⇒
 >
-> ```
+> ```sh
 > markdown_strict+pipe_tables+backtick_code_blocks+auto_identifiers+strikeout
 > ```
 > Below all scripts are given with the new `markdown_strict` source format.
 
 ```sh
-#!/bin/bash
+#!/bin/sh
 
 DATE_COVER=$(date "+%d %B %Y")
 
