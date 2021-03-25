@@ -249,7 +249,7 @@ $if(beamer)$
 $endif$
 $if(listings)$
 \usepackage{listings}
-% \newcommand{\passthrough}[1]{#1}
+\newcommand{\passthrough}[1]{#1}
 \lstset{defaultdialect=sh}
 \lstset{framexleftmargin=0mm, frame=trBL,backgroundcolor=\color{blanchedalmond!5},numbers=left,numberstyle=\scriptsize,basicstyle=\small}
 \lstset{aboveskip=5mm,belowskip=5mm,xleftmargin=20pt,xrightmargin=5pt}
