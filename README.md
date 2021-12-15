@@ -2,7 +2,13 @@
 
 This is a short guide about how I make PDF slides using **beamer** format output from the **pandoc**.
 
+**Update**: Changes from `xelatex` to `lualatex`.
+> I had issues with PDF creation using `xelatex` engine which I could not fix. My script worked on my home Manjaro Linux, but did not work on Ubuntu 20.04 with my corporate setup. 
+> After some troubleshooting I changed pdf engine to `lualatex` and things went back to normal.
+> `lualatex` engine is slower, than `xelatex`, but it gives better output.
+
 > Note: Commands are updated for the latest Pandoc version: `2.10.x` and newer.
+
 
 ## How-to for docs preparation
 
@@ -112,10 +118,10 @@ SOURCE_FORMAT="markdown_strict\
 +smart\
 +fenced_divs"
 
-pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --columns=50 --template default_mod.latex --pdf-engine xelatex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
+pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --columns=50 --template default_mod.latex --pdf-engine lualatex -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -V lang=en-US -t beamer presentation.md -o presentation.pdf
 ```
 
-> **--pdf-engine**: It is important to mention, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «xelatex» engine for PDF generation must be used.
+> **--pdf-engine**: It is important to mention, that if you want to use True Type fonts in presentation (which you put in the «mainfont»), the «lualatex» engine for PDF generation must be used.
 
 > **default_mod.latex**: This is default template which is modified by me to produce better looking listings. In the default template listings of code are not presented nicely, so I had to improve this part.
 
