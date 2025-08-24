@@ -2,6 +2,45 @@
 
 This is a short guide about how I make PDF slides using **beamer** format output from the **pandoc**.
 
+## Quick Start with make_deck
+
+The easiest way to get started is with the standalone `make_deck` executable:
+
+### Installation via Homebrew (macOS)
+
+```bash
+# Add this repository as a Homebrew tap
+brew tap hubrix/pandoc-beamer-how-to https://github.com/hubrix/pandoc-beamer-how-to
+
+# Install make_deck and its dependencies
+brew install make-deck
+
+# Install a TeX engine (recommended: tectonic)
+brew install tectonic
+```
+
+### Manual Installation
+
+1. Download the `make_deck` executable from this repository
+2. Install dependencies:
+   - [Pandoc](https://pandoc.org/installing.html)
+   - A TeX engine: [Tectonic](https://tectonic-typesetting.io/) (recommended) or [MacTeX](https://www.tug.org/mactex/)
+
+### Usage
+
+```bash
+# Basic usage
+make_deck presentation.md presentation.pdf
+
+# With enhanced styling
+make_deck presentation.md presentation.pdf --preamble
+
+# Get help
+make_deck --help
+```
+
+## About
+
 **Update**: Changes from `xelatex` to `lualatex`.
 > I had issues with PDF creation using `xelatex` engine which I could not fix. My script worked on my home Manjaro Linux, but did not work on Ubuntu 20.04 with my corporate setup. 
 > After some troubleshooting I changed pdf engine to `lualatex` and things went back to normal.

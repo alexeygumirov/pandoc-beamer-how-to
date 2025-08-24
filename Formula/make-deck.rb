@@ -3,7 +3,7 @@ class MakeDeck < Formula
   homepage "https://github.com/hubrix/pandoc-beamer-how-to"
   url "https://github.com/hubrix/pandoc-beamer-how-to/archive/refs/heads/macos-build-improvements.tar.gz"
   version "1.0.0"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000" # Placeholder - will be updated
+  sha256 "cd3a837b05850cad101c35287f2f6f9348cf8a43f41cb14a696f6a0b81883dee"
   license "MIT"
   head "https://github.com/hubrix/pandoc-beamer-how-to.git", branch: "macos-build-improvements"
 
