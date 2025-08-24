@@ -303,6 +303,8 @@ $if(links-as-notes)$
 $endif$
 $if(strikeout)$
 \usepackage[normalem]{ulem}
+% Define \st as alias for \sout for pandoc compatibility
+\newcommand{\st}[1]{\sout{#1}}
 % Avoid problems with \sout in headers with hyperref
 \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$

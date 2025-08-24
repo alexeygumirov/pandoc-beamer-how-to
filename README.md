@@ -52,7 +52,54 @@ sudo apt-get install texlive-xetex
 ```
 I recommend to use Pandoc of **2.10.x** or newer version for the creation of presentation because not all beamer features are supported in the Pandoc 1.x.
 
+### macOS (Apple Silicon)
+
+On Apple Silicon (M1/M2/M3/M4) Macs, install native ARM64 packages via Homebrew:
+
+```sh
+# Install pandoc
+brew install pandoc
+
+# EITHER install a lightweight TeX engine (recommended):
+brew install tectonic
+
+# OR install a full TeX distribution providing lualatex/xelatex (larger):
+# brew install --cask mactex-no-gui   # or: brew install basictex and then tlmgr add packages
+
+# Optional, for image utilities used in docs
+brew install imagemagick
+```
+
+Notes:
+
+- The provided script `_pres-gen.sh` now auto-detects the first available PDF engine in this order: `tectonic`, `lualatex`, `xelatex`. Using `tectonic` avoids installing a full TeX distribution and works well on macOS ARM.
+- Ensure Homebrew’s `bin` directory is on your `PATH` (usually `/opt/homebrew/bin` on Apple Silicon).
+- Fonts: If you use a custom font (e.g., Nerd Fonts), install it on macOS (e.g., download from nerdfonts.com or `brew install --cask font-hack-nerd-font`).
+
 ### Instructions and commands
+
+#### Makefile targets
+
+You can now use `make` for common tasks:
+
+```sh
+make check      # verify pandoc and a TeX engine exist
+make build      # generate presentation.pdf
+make preamble   # generate presentation_nice_formatting.pdf
+make open       # open the generated PDF (macOS/Linux)
+```
+
+#### One‑shot macOS bootstrap
+
+To install dependencies automatically on macOS via Homebrew, run:
+
+```sh
+make bootstrap-macos
+# or with options:
+bash scripts/bootstrap-macos.sh --full-tex      # install mactex-no-gui instead of tectonic
+bash scripts/bootstrap-macos.sh --no-fonts      # skip Nerd Font
+bash scripts/bootstrap-macos.sh --no-imagemagick
+```
 
 #### YAML Block for LaTex template
 
