@@ -8,19 +8,16 @@ class MakeDeck < Formula
   head "https://github.com/hubrix/make_deck.git", branch: "macos-build-improvements"
 
   depends_on "pandoc"
+  depends_on "tectonic"
+  depends_on "imagemagick"
 
-  # Recommend tectonic as the preferred TeX engine, but allow alternatives
+  # Install font as a cask dependency
   def caveats
     <<~EOS
-      make-deck requires a TeX engine to generate PDFs.
+      For enhanced typography, consider installing Hack Nerd Font:
+        brew install --cask font-hack-nerd-font
       
-      For the best experience, install tectonic (recommended):
-        brew install tectonic
-      
-      Alternatively, you can install a full TeX distribution:
-        brew install --cask mactex-no-gui
-      
-      Or use MacTeX from: https://www.tug.org/mactex/
+      This font provides better presentation aesthetics but is optional.
     EOS
   end
 
@@ -68,15 +65,9 @@ class MakeDeck < Formula
       It works!
     EOS
     
-    # Test PDF generation (only if tectonic is available)
-    if which("tectonic")
-      system bin/"make_deck", testpath/"test.md", testpath/"test.pdf"
-      assert_predicate testpath/"test.pdf", :exist?
-      assert_operator (testpath/"test.pdf").size, :>, 1000, "Generated PDF should be larger than 1KB"
-    else
-      # If no TeX engine available, just test that it fails gracefully
-      output = shell_output("#{bin}/make_deck #{testpath}/test.md #{testpath}/test.pdf 2>&1", 1)
-      assert_match(/No TeX engine found|pandoc is not installed/, output)
-    end
+    # Test PDF generation (tectonic is now guaranteed to be available)
+    system bin/"make_deck", testpath/"test.md", testpath/"test.pdf"
+    assert_predicate testpath/"test.pdf", :exist?
+    assert_operator (testpath/"test.pdf").size, :>, 1000, "Generated PDF should be larger than 1KB"
   end
 end

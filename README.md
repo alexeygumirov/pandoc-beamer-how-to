@@ -9,14 +9,12 @@ A standalone tool for creating beautiful PDF presentations from Markdown using P
 The easiest way to install `make_deck` on macOS:
 
 ```bash
-# Add the tap and install make_deck
+# Add the tap and install make_deck (includes all dependencies)
 brew tap hubrix/make_deck https://github.com/hubrix/make_deck
 brew install make-deck
 
-# Install a TeX engine (choose one):
-brew install tectonic                    # Lightweight, recommended
-# OR
-brew install --cask mactex-no-gui       # Full TeX distribution
+# Optional: Install enhanced fonts for better typography
+brew install --cask font-hack-nerd-font
 ```
 
 ### Option 2: One-Shot Bootstrap
@@ -36,10 +34,10 @@ bash scripts/bootstrap-macos.sh --no-imagemagick
 If you prefer manual installation:
 
 ```bash
-# Install dependencies
+# Install dependencies manually
 brew install pandoc tectonic imagemagick
 
-# Optional: Install fonts
+# Optional: Install fonts for enhanced typography
 brew install --cask font-hack-nerd-font
 
 # Download make_deck executable from this repository
