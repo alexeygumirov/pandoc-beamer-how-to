@@ -571,6 +571,7 @@ $include-after$
 
 $endfor$
 \end{document}
+
 TEMPLATE_EOF
 
     # Create the preamble.tex file
@@ -643,6 +644,7 @@ TEMPLATE_EOF
 \setbeamertemplate{footline}[miniframes theme no subsection]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatother
+
 PREAMBLE_EOF
 }
 

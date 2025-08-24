@@ -1,11 +1,11 @@
 class MakeDeck < Formula
   desc "Standalone pandoc beamer presentation generator"
-  homepage "https://github.com/hubrix/pandoc-beamer-how-to"
-  url "https://github.com/hubrix/pandoc-beamer-how-to/archive/refs/heads/macos-build-improvements.tar.gz"
+  homepage "https://github.com/hubrix/make_deck"
+  url "https://github.com/hubrix/make_deck/archive/refs/heads/macos-build-improvements.tar.gz"
   version "1.0.0"
   sha256 "cd3a837b05850cad101c35287f2f6f9348cf8a43f41cb14a696f6a0b81883dee"
   license "MIT"
-  head "https://github.com/hubrix/pandoc-beamer-how-to.git", branch: "macos-build-improvements"
+  head "https://github.com/hubrix/make_deck.git", branch: "macos-build-improvements"
 
   depends_on "pandoc"
 
