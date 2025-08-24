@@ -1,6 +1,6 @@
 SHELL := /bin/sh
 
-.PHONY: help check build preamble open bootstrap-macos
+.PHONY: help check build preamble open bootstrap-macos make_deck
 
 help:
 	@echo "Targets:"
@@ -8,6 +8,7 @@ help:
 	@echo "  build      - Generate presentation.pdf"
 	@echo "  preamble   - Generate presentation_nice_formatting.pdf"
 	@echo "  open       - Open generated PDF (macOS/Linux)"
+	@echo "  make_deck  - Generate standalone make_deck executable"
 	@echo "  bootstrap-macos - Install deps via Homebrew (pandoc, tectonic, etc.)"
 
 check:
@@ -43,3 +44,6 @@ open:
 
 bootstrap-macos:
 	bash scripts/bootstrap-macos.sh
+
+make_deck: pandoc/templates/default_mod.latex pandoc/templates/preamble.tex make_deck.template.sh build_make_deck.py
+	@python3 build_make_deck.py
