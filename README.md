@@ -1,3 +1,13 @@
+# 👋 THIS REPOSITORY HAS MOVED! 👋
+
+**This repository is no longer actively maintained on GitHub.**
+
+Please update your bookmarks and remotes to the new home on Codeberg:
+
+➡️ **[https://codeberg.org/alexeygumirov/pandoc-beamer-how-to](https://codeberg.org/alexeygumirov/pandoc-beamer-how-to)** ⬅️
+
+Thank you for your understanding!
+
 # make_deck - Pandoc Beamer Presentation Generator
 
 A standalone tool for creating beautiful PDF presentations from Markdown using Pandoc and LaTeX beamer.
